@@ -11,3 +11,20 @@ sumThreeOne = sumThree 1
 
 removeUppercase :: [Char] -> [Char]
 removeUppercase xs = [x | x <- xs, x `elem` '\n' : ['a' .. 'z']]
+
+lucky :: Int -> String
+lucky 7 = "you are luckier"
+lucky x = "sorry man"
+
+head' :: [a] -> a
+head' [] = error "wtf empty list"
+head' (x: xs) = x
+
+firstLetter :: String -> String
+firstLetter all@(x : xs) = "all = " ++ all ++ ", first letter is" ++ [x]
+
+tell :: (Num a) => (Ord a) => a -> String
+tell a 
+  | a < 10 = "hello"
+  | (a > 10 && a < 20) = "world"
+  |  otherwise = "hello world"
