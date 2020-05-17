@@ -25,6 +25,18 @@ firstLetter all@(x : xs) = "all = " ++ all ++ ", first letter is" ++ [x]
 
 tell :: (Num a) => (Ord a) => a -> String
 tell a 
-  | a < 10 = "hello"
-  | (a > 10 && a < 20) = "world"
+  | a < normal = "hello"
+  | (a > normal && a < big) = "world"
   |  otherwise = "hello world"
+  where 
+    normal = 10
+    big = 20
+
+cylinder :: Double -> Double -> Double
+cylinder r h =
+  let sideArea = 2 * pi * r * h
+      topArea = pi * r ^ 2
+  in sideArea + 2 * topArea
+
+calcBmis :: [(Double, Double)] -> [Double]
+calcBmis xs = [bmi | (w, h) <- xs, let bmi = w / h ^ 2, bmi > 25.0]
