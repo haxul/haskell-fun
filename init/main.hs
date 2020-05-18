@@ -40,3 +40,31 @@ cylinder r h =
 
 calcBmis :: [(Double, Double)] -> [Double]
 calcBmis xs = [bmi | (w, h) <- xs, let bmi = w / h ^ 2, bmi > 25.0]
+
+testmaximium' :: (Ord a) => [a] -> a
+testmaximium' [] = error "sorry"
+testmaximium' [x] = x
+testmaximium' (x:xs) = max x (testmaximium' xs)
+
+product' :: (Ord a) => (Num a) => [a] -> a
+product' [] = error "error"
+product' [x] = x
+product' (xs) = x * (product' xxs)
+  where x = head xs  
+        xxs = tail xs
+
+replicate' :: a -> Int-> [a]
+replicate' x 0 = []
+replicate' x y = x : replicate' x (y-1)
+
+take' :: Int -> [a] -> [a]
+take' 0 _ = []
+take' x (y:ys) = y : take (x-1) ys
+
+reverse' :: [a] -> [a]
+reverse' [] = []
+reverse' (x : xs) = reverse' xs ++ [x]
+
+
+
+
