@@ -95,3 +95,32 @@ flip' f y x = f x y
 map' :: (a -> a) -> [a] -> [a]
 map' _ [] = []
 map' f (x : xs) = f x : map' f xs
+
+filter' :: (a -> Bool) -> [a] -> [a]
+filter' _ [] = []
+filter' f (x :xs) = if f x == True then x : filter' f xs else filter' f xs  
+
+largeDivBy3829 :: [Integer]
+largeDivBy3829 =  [ x | x <- filter p [100000, 99999..0]]
+  where p x = x `mod` 3829 == 0
+
+
+takeWhile':: (a->Bool)->[a]->[a]
+takeWhile' _ [] = []
+takeWhile' p (x : xs) 
+  | p x == True = x : takeWhile' p xs
+  | otherwise = takeWhile' p []
+
+chain :: Integer -> [Integer]
+chain 1 = [1]
+chain n  
+  | even n = n : chain (n `div` 2)
+  | odd n = n : chain (n*3 + 1)
+
+numLongChains :: Int
+numLongChains = length (filter isLong (map chain [1..100]))
+  where isLong xs = length xs > 15
+
+
+mapTest :: (a -> b) -> [a] -> [b]
+mapTest f xs = foldl (\acc x -> f x : acc ) [] xs 
