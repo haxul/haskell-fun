@@ -88,3 +88,7 @@ lockerLookup lockerNumber map =  case Map.lookup lockerNumber map of
   Nothing -> Left "code doesnt exist"
   Just (status, code) -> if status /= Taken then Right code else Left $ code ++ " is taken"
 
+extract :: Either String Code -> String
+extract x  = case x of 
+  Left a -> a ++ " error"
+  Right b -> b
