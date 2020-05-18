@@ -78,8 +78,20 @@ elem' :: (Eq a) => a -> [a] -> Bool
 elem' _ [] = False
 elem' x (y:ys) = if y == x then True else elem x ys
 
+devideBy10 :: Double -> Double
+devideBy10 = (/10)
 
+applyTwice :: (a-> a) -> a -> a
+applyTwice f x = f (f x)
 
+zipWith' :: (a-> a-> a) -> [a] -> [a] -> [a]
+zipWith' _ [] _ = []
+zipWith' _ _ [] = []
+zipWith' f (x:xs) (y:ys) = f x y : zipWith' f xs ys
 
+flip' :: (a -> b -> c) -> (b -> a -> c)
+flip' f y x = f x y
 
-
+map' :: (a -> a) -> [a] -> [a]
+map' _ [] = []
+map' f (x : xs) = f x : map' f xs
