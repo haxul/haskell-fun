@@ -92,3 +92,17 @@ extract :: Either String Code -> String
 extract x  = case x of 
   Left a -> a ++ " error"
   Right b -> b
+
+data TrafficLight = Red | Yellow | Green 
+
+instance Eq TrafficLight where
+  Red == Red = True
+  Green == Green = True
+  Yellow == Yellow = True
+  _ == _ = False
+
+instance Show TrafficLight where 
+  show Red = "red light"
+  show Green = "red light"
+  show Yellow = "red light"
+  
